@@ -3,7 +3,7 @@ import Feature from "./Feature";
 import logo from "../../../../public/logo.png";
 const Feautres = () => {
   return (
-    <div className="mx-32 flex gap-16 justify-center">
+    <div className="mx-32 flex gap-16 justify-center py-16">
       <Feature
         heading="Stay up to date"
         description="You can allow notifications on your loan offers and lends to stay updated with your assets. "

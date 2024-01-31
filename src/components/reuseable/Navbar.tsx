@@ -1,13 +1,13 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import logo from "../../../public/logo.png";
+import logo from "../../../public/logo.svg";
 import { Button } from "@/components/ui/button";
 const Navbar = () => {
   return (
     <div className="w-full flex justify-between py-8 px-14 items-center z-30 relative ">
       <div className="flex items-center gap-20">
-        <Image src={logo} alt="logo" />
+        <Image src={logo} alt="logo" width={170} />
         <Link href="/how" className="text-xl">
           How it works
         </Link>
