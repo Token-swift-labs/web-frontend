@@ -1,10 +1,7 @@
 import React from "react";
-import Image from "next/image";
-import bgWaves1 from "../../../../public/waves-top.png";
-import bgWaves2 from "../../../../public/waves-mid.png";
+
 import Benefit from "./Benefit";
 import nft from "../../../../public/nft.png";
-import { Button } from "@/components/ui/button";
 const Benefits = () => {
   return (
     <div className="w-full   relative flex flex-col gap-16 py-8">
