@@ -8,24 +8,6 @@ import { Button } from "@/components/ui/button";
 const Benefits = () => {
   return (
     <div className="w-full   relative">
-      <Image
-        src={bgWaves1}
-        alt="waves left"
-        height={1300}
-        className=" absolute top-[-800px] left-[-250px] scale-y-[-1] rotate-[40deg] z-0"
-      />
-      <Image
-        src={bgWaves1}
-        alt="waves left"
-        height={1300}
-        className="  absolute top-[-300px] right-[-250px] scale-x-[-1] rotate-[-30deg] z-0"
-      />
-      <Image
-        src={bgWaves2}
-        alt="waves mid"
-        height={800}
-        className="  absolute top-[700px] left-[-320px] rotate-[10deg]  z-0"
-      />
       <div className="flex flex-col flex-1 pt-8">
         <Benefit
           reverse={false}

@@ -3,7 +3,7 @@ import logo from "../../../public/logo.svg";
 import discordIcon from "../../../public/discord.svg";
 const Footer = () => {
   return (
-    <div className="w-full">
+    <div className="w-full z-30 relative mt-[300px]">
       <div className="flex justify-between w-full bg-[#151527] p-4">
         <div className="flex ">
           <div className="flex items-center justify-center ">
