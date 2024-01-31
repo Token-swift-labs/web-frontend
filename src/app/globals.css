@@ -5,6 +5,8 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+  }
   body {
     background-color: #171717;
   }

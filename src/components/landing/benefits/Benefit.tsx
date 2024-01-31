@@ -12,17 +12,19 @@ const Benefit = (props: Props) => {
   const { reverse, image, heading, description, btnName } = props;
   return (
     <div
-      className={`flex z-20 mx-32 justify-center ${
-        reverse ? "flex-row-reverse" : "flex-row"
+      className={`flex z-20 mx-64 justify-center ${
+        reverse
+          ? "flex-row-reverse translate-x-[-100px]"
+          : "flex-row translate-x-[100px]"
       }`}
     >
-      <div className="text-center flex flex-col gap-3 items-center p-24">
+      <div className="text-center flex flex-col gap-2 items-center p-16">
         <div className="text-4xl font-bold">{heading}</div>
-        <div className="w-[60%]  text-xl font-extralight">{description}</div>
+        <div className="  text-xl font-extralight">{description}</div>
         <Button variant="primary">{btnName}</Button>
       </div>
       <div className="flex justify-center items-center">
-        <Image src={image} alt="benefit" width={200} />
+        <Image src={image} alt="benefit" width={1500} />
       </div>
     </div>
   );

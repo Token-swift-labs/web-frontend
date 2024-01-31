@@ -21,7 +21,12 @@ const config = {
       fontFamily: {
         kanit: ["Kanit", "sans-serif"],
       },
-      colors: {},
+      colors: {
+        background: "#171717",
+        text_dimmed: "#929292",
+        footer_blue: "#151527",
+        border_primary: "#363636",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

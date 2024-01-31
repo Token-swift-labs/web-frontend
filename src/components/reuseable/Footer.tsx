@@ -3,20 +3,20 @@ import logo from "../../../public/logo.svg";
 import discordIcon from "../../../public/discord.svg";
 const Footer = () => {
   return (
-    <div className="w-full z-30 relative mt-[300px]">
-      <div className="flex justify-between w-full bg-[#151527] p-4">
+    <div className="w-full z-30 relative mt-[350px]">
+      <div className="flex justify-between w-full bg-footer_blue p-4">
         <div className="flex ">
           <div className="flex items-center justify-center ">
             <Image src={logo} alt="logo" width={170} />
           </div>
           <div className="flex flex-col justify-center  ml-8 gap-1">
-            <div className="text-[#929292] text-xl font-semibold hover:text-white">
+            <div className="text-text_dimmed text-xl font-semibold hover:text-white">
               How it works
             </div>
-            <div className="text-[#929292] text-xl font-semibold hover:text-white">
+            <div className="text-text_dimmed text-xl font-semibold hover:text-white">
               FAQ
             </div>
-            <div className="text-[#929292] text-xl font-semibold hover:text-white">
+            <div className="text-text_dimmed text-xl font-semibold hover:text-white">
               Feedback
             </div>
           </div>
@@ -26,13 +26,13 @@ const Footer = () => {
             <Image src={discordIcon} alt="discord" />
           </button>
           <div className="flex flex-col items-end mt-4">
-            <div className="text-[#929292] text-md  hover:text-white">
+            <div className="text-text_dimmed text-md  hover:text-white">
               Privacy policy
             </div>
-            <div className="text-[#929292] text-md  hover:text-white">
+            <div className="text-text_dimmed text-md  hover:text-white">
               Terms
             </div>
-            <div className="text-[#929292] text-md hover:text-white">
+            <div className="text-text_dimmed text-md hover:text-white">
               ©2024 - Token Swift. All rights reserved.
             </div>
           </div>

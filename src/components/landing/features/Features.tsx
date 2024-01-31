@@ -1,6 +1,6 @@
 import React from "react";
 import Feature from "./Feature";
-import logo from "../../../../public/logo.png";
+import gear from "../../../../public/gears.png";
 const Feautres = () => {
   return (
     <div className="mx-32 flex gap-16 justify-center py-16">
@@ -8,13 +8,13 @@ const Feautres = () => {
         heading="Stay up to date"
         description="You can allow notifications on your loan offers and lends to stay updated with your assets. "
         btnName="Set notification"
-        bgImage={logo}
+        bgImage={gear}
       />
       <Feature
         heading="Have around"
         description="Download our Chrome extension to track your offers, lends and receive notifications!"
         btnName="Get extension"
-        bgImage={logo}
+        bgImage={gear}
       />
     </div>
   );
