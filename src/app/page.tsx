@@ -7,6 +7,7 @@ import Image from "next/image";
 import bgWaves1 from "../../public/waves-top.png";
 import bgWaves2 from "../../public/waves-mid.png";
 import bgWaves3 from "../../public/waves-bottom.svg";
+
 export default function LandingPage() {
   return (
     <div className="font-kanit text-white flex flex-col ">
@@ -33,7 +34,7 @@ export default function LandingPage() {
         <Image
           src={bgWaves3}
           alt="waves mid"
-          className="  absolute bottom-[-200px]  z-0"
+          className="  absolute bottom-[-200px]  z-0 w-full"
         />
         <Benefits />
         <Feautres />
