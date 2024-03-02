@@ -1,12 +1,27 @@
 "use client";
 
-import React from "react";
+import React, { use, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../../../public/logo.svg";
 import { Button } from "@/components/ui/button";
 import { animated, config, useSpring } from "react-spring";
 import { useHideOnScrollDown } from "@/hooks";
+import {
+  WalletDisconnectButton,
+  WalletModalButton,
+} from "@solana/wallet-adapter-react-ui";
+import {
+  AnchorProvider,
+  BN,
+  Program,
+  utils,
+  web3,
+} from "@project-serum/anchor";
+import { Connection, PublicKey } from "@solana/web3.js";
+import { useAnchorWallet } from "@solana/wallet-adapter-react";
+// const idl = require("../server/target/idl/server.json");
+// const utf8 = utils.bytes.utf8;
 const Navbar = () => {
   const isVisible = useHideOnScrollDown();
 
@@ -14,6 +29,34 @@ const Navbar = () => {
     to: { top: isVisible ? "0" : "-140px" },
     config: { ...config.wobbly, clamp: true },
   });
+  const anchorWallet = useAnchorWallet();
+  useEffect(() => {
+    if (anchorWallet) {
+      console.log("wallet", anchorWallet);
+    }
+  }, [anchorWallet]);
+  // async function sendTransaction() {
+  //   if (!anchorWallet) {
+  //     return;
+  //   }
+  //   const network = "https://api.devnet.solana.com";
+  //   const connection = new Connection(network, "processed");
+  //   const provider = new AnchorProvider(connection, anchorWallet, {
+  //     preflightCommitment: "processed",
+  //   });
+  //   const program = new Program(idl, idl.metadata.address, provider);
+
+  //   try {
+  //     const toKey = new PublicKey(
+  //       "kYDA2FvksMZWZ9KabiQgQ9AWVS62Wdk5wW4m2mn2CZD"
+  //     );
+  //     const trans = await program.methods.initialize().rpc();
+
+  //     console.log("trans", trans);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }
 
   return (
     <animated.header
@@ -38,9 +81,11 @@ const Navbar = () => {
           </Link>
         </div>
         <div>
-          <Button variant="default" size="lg">
+          {/* <Button variant="default" size="lg">
             Connect wallet
-          </Button>
+          </Button> */}
+          <WalletModalButton />
+          <WalletDisconnectButton />
         </div>
       </div>
     </animated.header>
