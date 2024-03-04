@@ -67,10 +67,11 @@ const Navbar = () => {
             Lending
           </Link>
           <Link href="/insurance" className="text-xl">
-            Insurance
+            Borrowing
           </Link>
-          <Link href="/buyaloan" className="text-xl">
-            Buy a loan
+          <Link href="/buyaloan" className="text-xl text-center">
+            Buy a loan <br />
+            <span className="text-text_dimmed">(soon)</span>
           </Link>
           <div>
             <ConnectButton />
