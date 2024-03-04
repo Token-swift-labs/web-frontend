@@ -10,6 +10,9 @@
   body {
     background-color: #171717;
   }
+  .wallet-adapter-modal-wrapper {
+    background-color: "white";
+  }
 }
 /* .wallet-adapter-button {
   background-color: white;

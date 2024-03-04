@@ -14,18 +14,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Clipboard } from "@phosphor-icons/react";
-import { set } from "@project-serum/anchor/dist/cjs/utils/features";
 import { Button } from "../ui/moving-border";
 const ConnectButton = () => {
   const anchorWallet = useAnchorWallet();
   const [copied, setIsCopied] = useState(false);
-  useEffect(() => {
-    if (anchorWallet) {
-      console.log("wallet", anchorWallet.publicKey.toBase58());
-    }
-  }, [anchorWallet]);
+
   const computeWalletName = (pubKey: string) =>
     pubKey.slice(0, 4) + "..." + pubKey.slice(-4);
+
   const handleCopyPubKey = () => {
     if (!anchorWallet) return;
     navigator.clipboard.writeText(anchorWallet.publicKey.toBase58());
@@ -34,6 +30,7 @@ const ConnectButton = () => {
       setIsCopied(false);
     }, 1000);
   };
+
   if (anchorWallet)
     return (
       <DropdownMenu>
@@ -71,10 +68,7 @@ const ConnectButton = () => {
         width: "auto",
       }}
     >
-      <Button
-        borderRadius="0"
-        className="bg-slate-900 text-white border-slate-800 border-[2px]"
-      >
+      <Button borderRadius="0" className="bg-slate-900 text-white  text-[16px]">
         Connect wallet
       </Button>
     </WalletModalButton>
