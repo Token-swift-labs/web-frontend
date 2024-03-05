@@ -27,7 +27,22 @@ const config = {
         background: "#171717",
         text_dimmed: "#929292",
         footer_blue: "#151527",
+        footer_blue_lighter: "#2a2a52",
         border_primary: "#363636",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
