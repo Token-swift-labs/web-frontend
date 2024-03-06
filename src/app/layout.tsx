@@ -1,4 +1,5 @@
 import Providers from "./providers";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata = {
   title: "Next.js",
@@ -13,7 +14,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Providers>
-        <body>{children}</body>
+        <body>
+          {children}
+          <Toaster />
+        </body>
       </Providers>
     </html>
   );

@@ -1,10 +1,6 @@
-import { useAnchorWallet, useWallet } from "@solana/wallet-adapter-react";
+import { Wallet, useWallet } from "@solana/wallet-adapter-react";
 import { useEffect, useState } from "react";
-import {
-  WalletDisconnectButton,
-  WalletModalButton,
-  WalletIcon,
-} from "@solana/wallet-adapter-react-ui";
+import { WalletDisconnectButton } from "@solana/wallet-adapter-react-ui";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,16 +10,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Clipboard } from "@phosphor-icons/react";
-import { Button } from "../ui/moving-border";
 import Image from "next/image";
-// import { Button } from "@/components/ui/button"
 import {
   Dialog,
-  DialogClose,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
@@ -33,18 +23,30 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { BackgroundGradient } from "../ui/background-gradient";
 import { GridLoader } from "react-spinners";
+import { ToastAction } from "@/components/ui/toast";
+import { useToast } from "@/components/ui/use-toast";
+
 const ConnectButton = () => {
   // const anchorWallet = useAnchorWallet();
   const { select, wallets, publicKey, disconnect, connecting, connected } =
     useWallet();
+  const { toast } = useToast();
+
+  const [selectedWallet, setSelectedWallet] = useState<Wallet | null>(null);
+
   useEffect(() => {
-    console.log("wallets", wallets);
-  }, [wallets]);
-  useEffect(() => {
-    console.log(connecting, connected);
-  }, [connecting, connected]);
+    if (publicKey) {
+      toast({
+        title: `Connected to ${
+          selectedWallet?.adapter.name ? selectedWallet.adapter.name : "your"
+        } wallet`,
+        description: `Selected wallet public key ${computeWalletName(
+          publicKey.toBase58()
+        )}`,
+      });
+    }
+  }, [connected, selectedWallet, publicKey]);
   const [copied, setIsCopied] = useState(false);
 
   const computeWalletName = (pubKey: string) =>
@@ -57,6 +59,10 @@ const ConnectButton = () => {
     setTimeout(() => {
       setIsCopied(false);
     }, 1000);
+  };
+  const handleSelectWallet = (wallet: Wallet) => {
+    select(wallet.adapter.name);
+    setSelectedWallet(wallet);
   };
 
   if (publicKey)
@@ -78,7 +84,16 @@ const ConnectButton = () => {
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
-            <WalletDisconnectButton />
+            <WalletDisconnectButton
+              onClick={() => {
+                toast({
+                  title: "Disconnected",
+                  description: `Disconnected wallet public key ${computeWalletName(
+                    publicKey.toBase58()
+                  )}`,
+                });
+              }}
+            />
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -101,8 +116,8 @@ const ConnectButton = () => {
             </span>
           </div>
         </DialogTrigger>
-        <DialogContent className="text-white sm:max-w-[350px] bg-footer_blue min-h-[200px]">
-          <DialogTitle className="text-2xl font-thin ">
+        <DialogContent className="text-white sm:max-w-[350px] bg-footer_blue min-h-[200px] p-0 rounded-2xl ">
+          <DialogTitle className="text-2xl font-thin px-6 pt-6">
             Connect your Solana wallet
           </DialogTitle>
           {connecting ? (
@@ -114,33 +129,39 @@ const ConnectButton = () => {
             </div>
           ) : (
             <>
-              <div className="flex flex-col gap-4 ">
-                <p>Detected wallets</p>
-                <div className="flex flex-col gap-2 items-center h-[150px] overflow-y-scroll">
+              <div className="flex flex-col justify-around gap-4 bg-footer_blue_lighter px-8 pt-4 rounded-t-2xl sm:max-w-[350px]">
+                <p className="text-xl">Detected</p>
+                <div className="flex flex-col gap-2 items-center h-[140px] overflow-y-scroll ">
                   {wallets
                     .filter((wallet) => wallet.readyState === "Installed")
                     .map((wallet) => (
                       <WalletButton
                         key={wallet.adapter.name}
                         wallet={wallet}
-                        select={select}
+                        handleSelect={handleSelectWallet}
                       />
                     ))}
                 </div>
               </div>
-              <Accordion type="single" collapsible className="shadow-none ">
+              <Accordion
+                type="single"
+                collapsible
+                className="shadow-none px-8 w-[350px] rounded-b-2xl mx-auto "
+              >
                 <AccordionItem value="item-1">
-                  <AccordionTrigger>Other wallets</AccordionTrigger>
+                  <AccordionTrigger className="p-0 text-xl">
+                    Other
+                  </AccordionTrigger>
                   <AccordionContent>
-                    <div className="grid grid-cols-2 gap-4 h-[140px] overflow-y-scroll">
+                    <div className=" w-[300px] overflow-x-scroll flex flex-nowrap justify-start ">
                       {wallets
                         .filter((wallet) => wallet.readyState === "Loadable")
                         .map((wallet) => (
                           <WalletButton
                             key={wallet.adapter.name}
                             wallet={wallet}
-                            select={select}
-                            className="w-32 mx-auto"
+                            handleSelect={handleSelectWallet}
+                            className=" hover:bg-footer_blue w-36 mx-4"
                           />
                         ))}
                     </div>
@@ -157,14 +178,18 @@ const ConnectButton = () => {
 
 export default ConnectButton;
 
-function WalletButton(props: { wallet: any; select: any; className?: string }) {
+function WalletButton(props: {
+  wallet: any;
+  className?: string;
+  handleSelect: (wallet: Wallet) => void;
+}) {
   return (
     <button
       onClick={() => {
-        props.select(props.wallet.adapter.name);
+        props.handleSelect(props.wallet);
       }}
       className={`w-40  flex gap-2 p-3 rounded-xl hover:bg-footer_blue_lighter items-center ${
-        props.className && props.className
+        props.className ? props.className : ""
       }`}
     >
       <Image
