@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 const HeroContent = () => {
   return (
-    <div className="w-full z-20 relative flex flex-col items-center mt-36">
+    <div className="w-full z-30 absolute flex flex-col items-center mt-36 ">
       <div className="flex justify-center items-center flex-col">
         <h1 className="text-center text-6xl font-medium leading-[80px]">
           Unlock the Value of your NFT <br /> with safety

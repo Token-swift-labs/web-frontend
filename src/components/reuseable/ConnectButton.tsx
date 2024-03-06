@@ -31,13 +31,13 @@ const ConnectButton = () => {
   // const anchorWallet = useAnchorWallet();
   const { select, wallets, publicKey, disconnect, connecting, connected } =
     useWallet();
-  const { toast } = useToast();
+  const { toast, dismiss } = useToast();
 
   const [selectedWallet, setSelectedWallet] = useState<Wallet | null>(null);
 
   useEffect(() => {
     if (publicKey) {
-      toast({
+      const { id } = toast({
         title: `Connected to  ${
           selectedWallet?.adapter.name ? selectedWallet.adapter.name : "your"
         } wallet`,
@@ -45,6 +45,9 @@ const ConnectButton = () => {
           publicKey.toBase58()
         )}`,
       });
+      setTimeout(() => {
+        dismiss(id);
+      }, 3000);
     }
   }, [connected, selectedWallet, publicKey]);
   const [copied, setIsCopied] = useState(false);
@@ -86,12 +89,15 @@ const ConnectButton = () => {
           <DropdownMenuItem>
             <WalletDisconnectButton
               onClick={() => {
-                toast({
+                const { id } = toast({
                   title: "Disconnected",
                   description: `Disconnected wallet with public key: ${computeWalletName(
                     publicKey.toBase58()
                   )}`,
                 });
+                setTimeout(() => {
+                  dismiss(id);
+                }, 3000);
               }}
             />
           </DropdownMenuItem>
