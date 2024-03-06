@@ -38,10 +38,10 @@ const ConnectButton = () => {
   useEffect(() => {
     if (publicKey) {
       toast({
-        title: `Connected to ${
+        title: `Connected to  ${
           selectedWallet?.adapter.name ? selectedWallet.adapter.name : "your"
         } wallet`,
-        description: `Selected wallet public key ${computeWalletName(
+        description: `Selected wallet with public key: ${computeWalletName(
           publicKey.toBase58()
         )}`,
       });
@@ -88,7 +88,7 @@ const ConnectButton = () => {
               onClick={() => {
                 toast({
                   title: "Disconnected",
-                  description: `Disconnected wallet public key ${computeWalletName(
+                  description: `Disconnected wallet with public key: ${computeWalletName(
                     publicKey.toBase58()
                   )}`,
                 });
@@ -116,7 +116,7 @@ const ConnectButton = () => {
             </span>
           </div>
         </DialogTrigger>
-        <DialogContent className="text-white sm:max-w-[350px] bg-footer_blue min-h-[200px] p-0 rounded-2xl ">
+        <DialogContent className="text-white sm:max-w-[350px] bg-footer_blue min-h-[200px] p-0 pb-4 sm:pb-2 rounded-2xl ">
           <DialogTitle className="text-2xl font-thin px-6 pt-6">
             Connect your Solana wallet
           </DialogTitle>
@@ -143,31 +143,33 @@ const ConnectButton = () => {
                     ))}
                 </div>
               </div>
-              <Accordion
-                type="single"
-                collapsible
-                className="shadow-none px-8 w-[350px] rounded-b-2xl mx-auto "
-              >
-                <AccordionItem value="item-1">
-                  <AccordionTrigger className="p-0 text-xl">
-                    Other
-                  </AccordionTrigger>
-                  <AccordionContent>
-                    <div className=" w-[300px] overflow-x-scroll flex flex-nowrap justify-start ">
-                      {wallets
-                        .filter((wallet) => wallet.readyState === "Loadable")
-                        .map((wallet) => (
-                          <WalletButton
-                            key={wallet.adapter.name}
-                            wallet={wallet}
-                            handleSelect={handleSelectWallet}
-                            className=" hover:bg-footer_blue w-36 mx-4"
-                          />
-                        ))}
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
+              <div className="flex justify-center items-center">
+                <Accordion
+                  type="single"
+                  collapsible
+                  className="shadow-none px-8 w-[350px] rounded-b-2xl mx-auto "
+                >
+                  <AccordionItem value="item-1">
+                    <AccordionTrigger className="p-0 text-xl">
+                      Other
+                    </AccordionTrigger>
+                    <AccordionContent className="overflow-x-scroll">
+                      <div className=" w-[300px]  flex flex-nowrap justify-start ">
+                        {wallets
+                          .filter((wallet) => wallet.readyState === "Loadable")
+                          .map((wallet) => (
+                            <WalletButton
+                              key={wallet.adapter.name}
+                              wallet={wallet}
+                              handleSelect={handleSelectWallet}
+                              className=" hover:bg-transparent w-36 mx-4"
+                            />
+                          ))}
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              </div>
             </>
           )}
         </DialogContent>
@@ -188,7 +190,7 @@ function WalletButton(props: {
       onClick={() => {
         props.handleSelect(props.wallet);
       }}
-      className={`w-40  flex gap-2 p-3 rounded-xl hover:bg-footer_blue_lighter items-center ${
+      className={`w-40  flex gap-2 p-3 rounded-xl hover:bg-slate-500/20 items-center ${
         props.className ? props.className : ""
       }`}
     >
