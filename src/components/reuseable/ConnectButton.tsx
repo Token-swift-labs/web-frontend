@@ -26,6 +26,7 @@ import {
 import { GridLoader } from "react-spinners";
 import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/components/ui/use-toast";
+import { Meteors } from "../ui/meteors";
 
 const ConnectButton = () => {
   // const anchorWallet = useAnchorWallet();
@@ -122,12 +123,12 @@ const ConnectButton = () => {
             </span>
           </div>
         </DialogTrigger>
-        <DialogContent className="text-white sm:max-w-[350px] bg-footer_blue min-h-[200px] p-0 pb-4 sm:pb-2 rounded-2xl ">
-          <DialogTitle className="text-2xl font-thin px-6 pt-6">
+        <DialogContent className="text-white sm:max-w-[350px] bg-footer_blue min-h-[200px] p-0 pb-4 sm:pb-2 rounded-2xl overflow-hidden">
+          <DialogTitle className="text-2xl font-thin px-6 pt-6 z-50">
             Connect your Solana wallet
           </DialogTitle>
           {connecting ? (
-            <div className=" absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col justify-center items-center gap-2">
+            <div className="z-50 absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col justify-center items-center gap-2">
               <GridLoader color="#4141d9" />
               <p className="whitespace-nowrap text-text_dimmed">
                 Check your wallet provider
@@ -135,7 +136,7 @@ const ConnectButton = () => {
             </div>
           ) : (
             <>
-              <div className="flex flex-col justify-around gap-4 bg-footer_blue_lighter px-8 pt-4 rounded-t-2xl sm:max-w-[350px]">
+              <div className="z-50 flex flex-col justify-around gap-4 bg-footer_blue_lighter/70 px-8 pt-4 rounded-t-2xl sm:max-w-[350px]">
                 <p className="text-xl">Detected</p>
                 <div className="flex flex-col gap-2 items-center h-[140px] overflow-y-scroll ">
                   {wallets
@@ -149,7 +150,7 @@ const ConnectButton = () => {
                     ))}
                 </div>
               </div>
-              <div className="flex justify-center items-center">
+              <div className="flex justify-center items-center z-50">
                 <Accordion
                   type="single"
                   collapsible
@@ -178,6 +179,7 @@ const ConnectButton = () => {
               </div>
             </>
           )}
+          <Meteors number={20} />
         </DialogContent>
       </Dialog>
     </>
