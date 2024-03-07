@@ -3,22 +3,25 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
-
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center whitespace-nowrap  text-sm font-medium ",
   {
     variants: {
       variant: {
-        default: "bg-white text-black rounded-none font-semibold text-md",
-        primary: "bg-white text-black rounded-md ",
-        gradient: "bg-gradient-to-r from-blue-600 to-purple-600 text-white",
-        shadow: "bg-[#424242]/50 text-[#8F8F8F] border-2 border-[#222223]",
-        link: "text-primary underline-offset-4 hover:underline",
+        default:
+          "bg-white text-black rounded-none font-semibold hover:bg-white/50",
+        primary:
+          "bg-white text-black rounded-md font-semibold hover:bg-white/50 text-[16px] ",
+        gradient:
+          "bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-none ",
+        shadow:
+          "bg-[#120918]/50 text-[#8F8F8F] border-2 border-[#424242] hover:bg-[#120918]/10",
+        link: "text-text_dimmed font-semibold hover:text-white bg-none rounded-none p-0 m-0",
       },
       size: {
-        default: "h-10 px-4 py-2",
+        default: "h-10 px-8 py-2",
         sm: "h-9 rounded-md px-3",
-        lg: "h-11  px-8",
+        lg: "h-12  px-8 text-[16px]",
         icon: "h-10 w-10",
       },
     },
@@ -41,7 +44,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
+        // ref={ref}
         {...props}
       />
     );
