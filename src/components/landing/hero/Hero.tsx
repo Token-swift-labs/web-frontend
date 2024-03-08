@@ -1,4 +1,4 @@
-import Navbar from "@/components/reuseable/Navbar";
+import { Navbar } from "@/components";
 import React from "react";
 import HeroContent from "./HeroContent";
 import HeroBranding from "./HeroBranding";
