@@ -10,24 +10,23 @@ const Benefits = () => {
         image={nft}
         heading="Lending"
         description="Use your NFT as collateral and take loans from other users with
-              insurance and option to resell the loan."
+               and option to resell the loan, or provide liquidity for borrowers."
         btnName="Lending"
       />
       <Benefit
         reverse
         image={nft}
-        heading="Insurance"
-        description="Play safe by buying insurance for your debts. Insurance will cover
-          not payed amount of debt. You can also try to resell the loan."
-        btnName="Insurance"
-      />
-      <Benefit
-        reverse={false}
-        image={nft}
         heading="Trust Score"
         description="As a lender you can verify creditworthiness
           of potential borrower by Trust Score, calculated of history of loans."
         btnName="Trust Score"
+      />
+      <Benefit
+        reverse={false}
+        image={nft}
+        heading="User friendly"
+        description="Designed to be user friendly, with a simple and intuitive interface and AI powered features."
+        btnName="Use of AI"
       />
     </div>
   );

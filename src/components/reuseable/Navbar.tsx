@@ -1,20 +1,55 @@
 "use client";
 
-import React from "react";
+import React, { use, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../../../public/logo.svg";
-import { Button } from "@/components/ui/button";
+
 import { animated, config, useSpring } from "react-spring";
 import { useHideOnScrollDown } from "@/hooks";
 
-export const Navbar = () => {
+// import {
+//   AnchorProvider,
+//   BN,
+//   Program,
+//   utils,
+//   web3,
+// } from "@project-serum/anchor";
+// import { Connection, PublicKey } from "@solana/web3.js";
+import { useAnchorWallet } from "@solana/wallet-adapter-react";
+import ConnectButton from "./ConnectButton";
+// const idl = require("../server/target/idl/server.json");
+// const utf8 = utils.bytes.utf8;
+const Navbar = () => {
   const isVisible = useHideOnScrollDown();
 
   const props = useSpring({
     to: { top: isVisible ? "0" : "-140px" },
     config: { ...config.wobbly, clamp: true },
   });
+
+  // async function sendTransaction() {
+  //   if (!anchorWallet) {
+  //     return;
+  //   }
+  //   const network = "https://api.devnet.solana.com";
+  //   const connection = new Connection(network, "processed");
+  //   const provider = new AnchorProvider(connection, anchorWallet, {
+  //     preflightCommitment: "processed",
+  //   });
+  //   const program = new Program(idl, idl.metadata.address, provider);
+
+  //   try {
+  //     const toKey = new PublicKey(
+  //       "kYDA2FvksMZWZ9KabiQgQ9AWVS62Wdk5wW4m2mn2CZD"
+  //     );
+  //     const trans = await program.methods.initialize().rpc();
+
+  //     console.log("trans", trans);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }
 
   return (
     <animated.header
@@ -33,17 +68,16 @@ export const Navbar = () => {
           <Link href="/lending" className="text-xl">
             Lending
           </Link>
-          <Link href="/borrow" className="text-xl">
-            Borrow
+          <Link href="/insurance" className="text-xl">
+            Borrowing
           </Link>
-          <Link href="/buyaloan" className="text-xl">
-            Buy a loan
+          <Link href="/buyaloan" className="text-xl text-center">
+            Buy a loan <br />
+            <span className="text-text_dimmed">(soon)</span>
           </Link>
-        </div>
-        <div className="flex items-center ">
-          <Button variant="default" size="lg">
-            Connect wallet
-          </Button>
+          <div>
+            <ConnectButton />
+          </div>
         </div>
       </div>
     </animated.header>
