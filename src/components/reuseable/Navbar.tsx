@@ -20,7 +20,7 @@ import { useAnchorWallet } from "@solana/wallet-adapter-react";
 import ConnectButton from "./ConnectButton";
 // const idl = require("../server/target/idl/server.json");
 // const utf8 = utils.bytes.utf8;
-const Navbar = () => {
+export const Navbar = () => {
   const isVisible = useHideOnScrollDown();
 
   const props = useSpring({
@@ -68,7 +68,7 @@ const Navbar = () => {
           <Link href="/lending" className="text-xl">
             Lending
           </Link>
-          <Link href="/insurance" className="text-xl">
+          <Link href="/borrowing" className="text-xl">
             Borrowing
           </Link>
           <Link href="/buyaloan" className="text-xl text-center">
