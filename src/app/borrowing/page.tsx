@@ -35,7 +35,7 @@ const nfts = [
     currency: "SOL",
     interestRate: 0.13,
     ballance: {
-      payedOff: 0.98,
+      payedOff: 0.2,
       insurance: true,
     },
   },
@@ -51,7 +51,7 @@ const nfts = [
     currency: "SOL",
     interestRate: 0.13,
     ballance: {
-      payedOff: 0.98,
+      payedOff: 1.6,
       insurance: true,
     },
   },
@@ -123,9 +123,9 @@ const borrowing = () => {
                   <td>{nft.duration}</td>
                   <td>{nft.remainingTime}</td>
                   <td>
-                    {nft.total} {nft.currency}
+                    {nft.total.toFixed(2)} {nft.currency}
                   </td>
-                  <td>{nft.interestRate * 100}%</td>
+                  <td>{(nft.interestRate * 100).toFixed(2)}%</td>
                   <td>
                     <div className="borrowing-balance-td">
                       <PercentBar
@@ -135,15 +135,40 @@ const borrowing = () => {
                         className="flex flex-row items-center"
                         style={{ gap: 10 }}
                       >
-                        <div className="flex flex-col text-sm">
-                          <span className="gray-text">payed off:</span>
-                          <span className="gray-text">remaining:</span>
-                          <span className="gray-text">insurance:</span>
+                        <div className="flex flex-col text-sm gray-text">
+                          <span>payed off:</span>
+                          <span>remaining:</span>
+                          <span>insurance:</span>
+                          {nft.ballance.insurance && <span>sell a loan: </span>}
+                        </div>
+                        <div className="flex flex-col items-start text-sm">
+                          <span>
+                            {nft.ballance.payedOff.toFixed(2)} {nft.currency}
+                          </span>
+                          <span>
+                            {(nft.total - nft.ballance.payedOff).toFixed(2)}{" "}
+                            {nft.currency}
+                          </span>
+                          <span
+                            className={
+                              nft.ballance.insurance
+                                ? "text-green-500"
+                                : "text-red-500"
+                            }
+                          >
+                            {nft.ballance.insurance
+                              ? "up to " +
+                                (
+                                  (nft.total - nft.ballance.payedOff) *
+                                  0.95
+                                ).toFixed(2)
+                              : "no"}
+                          </span>
+
                           {nft.ballance.insurance && (
-                            <span className="gray-text">sell a loan: </span>
+                            <span className="text-green-500">yes</span>
                           )}
                         </div>
-                        {nft.ballance.payedOff} {nft.currency}
                       </div>
                     </div>
                   </td>
