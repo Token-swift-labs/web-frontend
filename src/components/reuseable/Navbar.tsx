@@ -75,10 +75,8 @@ export const Navbar = () => {
             Buy a loan <br />
             <span className="text-text_dimmed">(soon)</span>
           </Link>
-          <div>
-            <ConnectButton />
-          </div>
         </div>
+        <ConnectButton />
       </div>
     </animated.header>
   );
