@@ -1,9 +1,9 @@
 import Image from "next/image";
 import logo from "../../../public/logo.svg";
 import discordIcon from "../../../public/discord.svg";
-const Footer = () => {
+export const Footer = () => {
   return (
-    <div className="w-full z-30 relative mt-[350px]">
+    <div className="w-full z-30 relative mt-[100px]">
       <div className="flex justify-between w-full bg-footer_blue p-4">
         <div className="flex ">
           <div className="flex items-center justify-center ">
@@ -42,4 +42,3 @@ const Footer = () => {
     </div>
   );
 };
-export default Footer;

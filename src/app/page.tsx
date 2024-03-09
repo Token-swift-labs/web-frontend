@@ -2,7 +2,7 @@ import Hero from "@/components/landing/hero/Hero";
 import "./globals.css";
 import Benefits from "@/components/landing/benefits/Benefits";
 import Feautres from "@/components/landing/features/Features";
-import Footer from "@/components/reuseable/Footer";
+import { Footer } from "@/components";
 import Image from "next/image";
 import bgWaves1 from "../../public/waves-top.png";
 import bgWaves2 from "../../public/waves-mid.png";

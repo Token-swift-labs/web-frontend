@@ -1,0 +1,25 @@
+.borrowing-td {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.borrowing-balance-td {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+td {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.gray-blue-text {
+  color: #484872;
+}
+.gray-text {
+  color: #626262;
+}
