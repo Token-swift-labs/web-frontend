@@ -16,3 +16,10 @@ td {
   font-size: 18px;
   font-weight: 400;
 }
+
+.gray-blue-text {
+  color: #484872;
+}
+.gray-text {
+  color: #626262;
+}

@@ -73,7 +73,7 @@ const borrowing = () => {
             >
               Borrow
             </h2>
-            <a href="/how-it-works" className="text-[#484872]">
+            <a href="/how-it-works" className="gray-blue-text">
               How it works?
             </a>
           </div>
@@ -89,8 +89,8 @@ const borrowing = () => {
           }}
         >
           <h3 className="text-4xl">
-            Active loans / <span className="text-[#484872]">Pending</span> /{" "}
-            <span className="text-[#484872]">History</span>
+            Active loans / <span className="gray-blue-text">Pending</span> /{" "}
+            <span className="gray-blue-text">History</span>
           </h3>
           <div
             className="flex flex-row items-center justify-between bg-[#151527] opacity-80 p-4 rounded-xl"
@@ -98,12 +98,12 @@ const borrowing = () => {
           >
             <table className=" w-full">
               <tr>
-                <th className="text-[#484872]">NFT</th>
-                <th className="text-[#484872]">Duration</th>
-                <th className="text-[#484872]">Remaining time</th>
-                <th className="text-[#484872]">Total</th>
-                <th className="text-[#484872]">Interest rate</th>
-                <th className="text-[#484872]">Ballance</th>
+                <th className="gray-text">NFT</th>
+                <th className="gray-text">Duration</th>
+                <th className="gray-text">Remaining time</th>
+                <th className="gray-text">Total</th>
+                <th className="gray-text">Interest rate</th>
+                <th className="gray-text">Ballance</th>
                 <th></th>
               </tr>
               {nfts.map((nft) => (
@@ -131,12 +131,20 @@ const borrowing = () => {
                       <PercentBar
                         percent={(nft.ballance.payedOff / nft.total) * 100}
                       />
-                      {nft.ballance.payedOff} {nft.currency}{" "}
-                      {nft.ballance.insurance ? (
-                        <span className="text-green-500">Insured</span>
-                      ) : (
-                        <span className="text-red-500">Not insured</span>
-                      )}
+                      <div
+                        className="flex flex-row items-center"
+                        style={{ gap: 10 }}
+                      >
+                        <div className="flex flex-col text-sm">
+                          <span className="gray-text">payed off:</span>
+                          <span className="gray-text">remaining:</span>
+                          <span className="gray-text">insurance:</span>
+                          {nft.ballance.insurance && (
+                            <span className="gray-text">sell a loan: </span>
+                          )}
+                        </div>
+                        {nft.ballance.payedOff} {nft.currency}
+                      </div>
                     </div>
                   </td>
                   <td>
