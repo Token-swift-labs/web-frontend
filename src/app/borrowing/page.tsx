@@ -4,7 +4,7 @@ import Image from "next/image";
 import bgWaves1 from "../../../public/waves-bottom.svg";
 import { Button } from "@/components/ui/button";
 import "./style.css";
-import { PercentBar } from "@/components/ui";
+import { PercentBar, RoundedButton } from "@/components/ui";
 
 const nfts = [
   {
@@ -20,7 +20,7 @@ const nfts = [
     interestRate: 0.13,
     ballance: {
       payedOff: 0.98,
-      insurance: true,
+      insurance: false,
     },
   },
   {
@@ -173,7 +173,14 @@ const borrowing = () => {
                     </div>
                   </td>
                   <td>
-                    <Button>Pay off</Button>
+                    <div className="flex flex-col" style={{ gap: 10 }}>
+                      <RoundedButton borderColor="rgb(34, 197, 94)">
+                        Pay off
+                      </RoundedButton>
+                      {nft.ballance.insurance && (
+                        <RoundedButton>Sell a loan</RoundedButton>
+                      )}
+                    </div>
                   </td>
                 </tr>
               ))}
