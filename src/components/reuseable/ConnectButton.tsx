@@ -26,7 +26,6 @@ import {
 import { GridLoader } from "react-spinners";
 import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/components/ui/use-toast";
-import { Meteors } from "../ui/meteors";
 import OverlayMeteors from "../ui/OverlayMeteors";
 
 const ConnectButton = () => {
@@ -117,9 +116,9 @@ const ConnectButton = () => {
           >
             Connect wallet
           </Button> */}
-          <div className="relative inline-flex h-12 overflow-hidden rounded-full p-[2px] focus:outline-none ">
+          <div className="relative inline-flex h-10 md:h-12 overflow-hidden rounded-full p-[2px] focus:outline-none ">
             <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#393BB2_0%,#ad70fa_50%,#393BB2_100%)]" />
-            <span className=" whitespace-nowrap inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-footer_blue_lighter hover:bg-footer_blue_lighter/50 px-6 py-1 text-md font-medium text-white backdrop-blur-3xl">
+            <span className=" whitespace-nowrap inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-footer_blue_lighter hover:bg-footer_blue_lighter/50 px-3 md:px-6 md:py-1 text-md font-medium text-white backdrop-blur-3xl">
               Connect wallet
             </span>
           </div>

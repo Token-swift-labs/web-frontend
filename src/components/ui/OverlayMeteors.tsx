@@ -1,4 +1,4 @@
-import { Meteors } from "./meteors";
+import Meteors from "./meteors";
 type Props = {
   isOpen: boolean;
 };

@@ -26,7 +26,6 @@ import {
 import { useAnchorWallet } from "@solana/wallet-adapter-react";
 import ConnectButton from "./ConnectButton";
 import { Browsers, List } from "@phosphor-icons/react";
-import { Meteors } from "../ui/meteors";
 import { Button } from "../ui/button";
 import OverlayMeteors from "../ui/OverlayMeteors";
 // const idl = require("../server/target/idl/server.json");
@@ -93,13 +92,13 @@ export const Navbar = () => {
             </Link>
           </div>
           {/* Small devices navbar */}
-          <div className="flex md:hidden justify-between w-full">
+          <div className="flex md:hidden justify-between w-full items-center">
             <Link href="/">
               <Image src={logo} alt="logo" width={130} />
             </Link>
             <Drawer onOpenChange={(open) => setIsOpen(open)}>
               <DrawerTrigger>
-                <List size={40} className=" mr-4" />
+                <List size={40} className=" mx-4" />
               </DrawerTrigger>
               <DrawerContent className="">
                 <div className="absolute inset-x-0 h-px w-3/4 mx-auto -top-px shadow-2xl  bg-gradient-to-r from-transparent via-blue-500 to-transparent" />

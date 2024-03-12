@@ -1,15 +1,30 @@
 import { cn } from "@/lib/utils";
 import clsx from "clsx";
-import React from "react";
+import React, { memo, useEffect } from "react";
 
-export const Meteors = ({
+const Meteors = ({
   number,
   className,
 }: {
   number?: number;
   className?: string;
 }) => {
-  const meteors = new Array(number || 20).fill(true);
+  // const meteors = new Array(number || 20).fill(true);
+  const [meteors, setMeteors] = React.useState<
+    { left: string; animationDelay: string; animationDuration: string }[]
+  >([]);
+  useEffect(() => {
+    for (let i = 0; i < (number || 20); i++) {
+      setMeteors((prev) => [
+        ...prev,
+        {
+          left: Math.floor(Math.random() * (400 - -400) + -400) + "px",
+          animationDelay: Math.random() * (0.8 - 0.2) + 0.2 + "s",
+          animationDuration: Math.floor(Math.random() * (10 - 2) + 2) + "s",
+        },
+      ]);
+    }
+  }, []);
   return (
     <>
       {meteors.map((el, idx) => (
@@ -22,12 +37,13 @@ export const Meteors = ({
           )}
           style={{
             top: 0,
-            left: Math.floor(Math.random() * (400 - -400) + -400) + "px",
-            animationDelay: Math.random() * (0.8 - 0.2) + 0.2 + "s",
-            animationDuration: Math.floor(Math.random() * (10 - 2) + 2) + "s",
+            left: el.left,
+            animationDelay: el.animationDelay,
+            animationDuration: el.animationDuration,
           }}
         ></span>
       ))}
     </>
   );
 };
+export default memo(Meteors);
