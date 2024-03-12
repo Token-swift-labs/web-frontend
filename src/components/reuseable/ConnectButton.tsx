@@ -27,6 +27,7 @@ import { GridLoader } from "react-spinners";
 import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/components/ui/use-toast";
 import { Meteors } from "../ui/meteors";
+import OverlayMeteors from "../ui/OverlayMeteors";
 
 const ConnectButton = () => {
   // const anchorWallet = useAnchorWallet();
@@ -123,12 +124,15 @@ const ConnectButton = () => {
             </span>
           </div>
         </DialogTrigger>
-        <DialogContent className="text-white sm:max-w-[350px] bg-footer_blue min-h-[200px] p-0 pb-4 sm:pb-2 rounded-2xl overflow-hidden">
-          <DialogTitle className="text-2xl font-thin px-6 pt-6 z-50">
+        <DialogContent className="text-white sm:max-w-[350px] bg-footer_blue min-h-[200px] p-0 pb-4 sm:pb-2 rounded-t-2xl md:rounded-2xl ">
+          <div className="absolute inset-x-0 h-px w-1/2 mx-auto -top-px shadow-2xl  bg-gradient-to-r from-transparent via-violet-500 to-transparent" />
+          <div className="absolute inset-x-0 h-px w-3/4 mx-auto -bottom-px shadow-2xl  bg-gradient-to-r from-transparent via-violet-500 to-transparent" />
+
+          <DialogTitle className="text-2xl font-thin px-6 pt-6 z-30">
             Connect your Solana wallet
           </DialogTitle>
           {connecting ? (
-            <div className="z-50 absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col justify-center items-center gap-2">
+            <div className="z-30 absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col justify-center items-center gap-2">
               <GridLoader color="#4141d9" />
               <p className="whitespace-nowrap text-text_dimmed">
                 Check your wallet provider
@@ -136,7 +140,7 @@ const ConnectButton = () => {
             </div>
           ) : (
             <>
-              <div className="z-50 flex flex-col justify-around gap-4 bg-footer_blue_lighter/70 px-8 pt-4 rounded-t-2xl sm:max-w-[350px]">
+              <div className="z-30 flex flex-col justify-around gap-4 bg-footer_blue_lighter/40 px-8 pt-4 rounded-2xl sm:max-w-[350px]">
                 <p className="text-xl">Detected</p>
                 <div className="flex flex-col gap-2 items-center h-[140px] overflow-y-scroll ">
                   {wallets
@@ -150,7 +154,7 @@ const ConnectButton = () => {
                     ))}
                 </div>
               </div>
-              <div className="flex justify-center items-center z-50">
+              <div className="flex justify-center items-center z-30">
                 <Accordion
                   type="single"
                   collapsible
@@ -179,7 +183,6 @@ const ConnectButton = () => {
               </div>
             </>
           )}
-          <Meteors number={20} />
         </DialogContent>
       </Dialog>
     </>
