@@ -36,7 +36,7 @@ const Meteors = ({
             className
           )}
           style={{
-            top: 0,
+            top: -10,
             left: el.left,
             animationDelay: el.animationDelay,
             animationDuration: el.animationDuration,

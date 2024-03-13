@@ -77,7 +77,7 @@ export const Navbar = () => {
             <Link href="/">
               <Image src={logo} alt="logo" width={170} />
             </Link>
-            <Link href="/how" className="text-xl">
+            <Link href="/how" className="text-xl text-center">
               How it works
             </Link>
             <Link href="/lending" className="text-xl">
