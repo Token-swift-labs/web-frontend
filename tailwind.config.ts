@@ -6,7 +6,7 @@ const { join } = require("path");
 
 const config = {
   darkMode: ["class"],
-  purge: [
+  content: [
     join(__dirname, "src/pages/**/*.{ts,tsx,js,jsx}"),
     join(__dirname, "src/components/**/*.{ts,tsx,js,jsx}"),
     join(__dirname, "src/**/*.{ts,tsx,js,jsx}"),
