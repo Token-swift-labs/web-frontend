@@ -1,5 +1,6 @@
 import Providers from "./providers";
 import { Toaster } from "@/components/ui/toaster";
+import "./globals.css";
 
 export const metadata = {
   title: "Next.js",

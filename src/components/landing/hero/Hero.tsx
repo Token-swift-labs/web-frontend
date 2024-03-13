@@ -11,7 +11,7 @@ const Hero: React.FC = () => {
         <Navbar />
         <HeroContent />
         <HeroNFT
-          className="top-[200px] left-[50px] scale-95 rotate-[-10deg] hidden sm:flex"
+          className=" top-[250px] md:top-[200px] left-[50px] scale-95 rotate-[-10deg] hidden sm:flex"
           imageUrl="/nft.jpg"
           title="Collection #1234"
           floor="0.5"
@@ -19,7 +19,7 @@ const Hero: React.FC = () => {
           remaining="9 days"
         />
         <HeroNFT
-          className="top-[200px] right-[50px] scale-95 rotate-[10deg] hidden sm:flex"
+          className="top-[250px] md:top-[200px] right-[50px] scale-95 rotate-[10deg] hidden sm:flex"
           imageUrl="/nft.jpg"
           title="Collection #4200"
           floor="1.29"

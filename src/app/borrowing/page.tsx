@@ -202,7 +202,7 @@ const borrowing = () => {
         className="absolute w-full"
         style={{
           filter: "brightness(0.4)",
-          bottom: "-50px",
+          bottom: "-200px",
           position: "fixed",
           zIndex: -1,
         }}
