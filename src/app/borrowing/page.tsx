@@ -1,12 +1,16 @@
+"use client";
 import { Navbar, Footer } from "@/components";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import bgWaves1 from "../../../public/waves-bottom.svg";
 import { Button } from "@/components/ui/button";
 import "./style.css";
 import ActiveLoans from "@/components/borrowing/active-loans/ActiveLoans";
 
-const borrowing = () => {
+const Borrowing = () => {
+  const [activePage, setActivePage] = useState<
+    "active" | "pending" | "history"
+  >("active");
   return (
     <div className="font-kanit text-white flex flex-col ">
       <Navbar />
@@ -38,11 +42,31 @@ const borrowing = () => {
           }}
         >
           <h3 className="text-4xl">
-            Active loans / <span className="gray-blue-text">Pending</span> /{" "}
-            <span className="gray-blue-text">History</span>
+            <button
+              className={activePage !== "active" ? "gray-blue-text" : ""}
+              onClick={() => setActivePage("active")}
+            >
+              Active loans
+            </button>
+            /
+            <button
+              className={activePage !== "pending" ? "gray-blue-text" : ""}
+              onClick={() => setActivePage("pending")}
+            >
+              Pending
+            </button>
+            /
+            <button
+              className={activePage !== "history" ? "gray-blue-text" : ""}
+              onClick={() => setActivePage("history")}
+            >
+              History
+            </button>
           </h3>
           <div className="flex flex-row items-center justify-between bg-[#151527] opacity-80 p-4 rounded-xl w-[100%]">
-            <ActiveLoans />
+            {activePage === "active" && <ActiveLoans />}
+            {activePage === "pending" && <></>}
+            {activePage === "history" && <></>}
           </div>
         </div>
       </div>
@@ -64,4 +88,4 @@ const borrowing = () => {
   );
 };
 
-export default borrowing;
+export default Borrowing;

@@ -24,17 +24,17 @@ const ActiveLoan = ({ nft }: Props) => {
 
   useEffect(() => {
     let interval = setInterval(() => {
-      const [timeString, rawDeifference] = timeDiff(
+      const [timeString, rawDifference] = timeDiff(
         new Date(nft.expirationTimeStamp),
         new Date()
       );
       setRemaining(timeString as string);
-      // To display
     }, 1000);
     return () => {
       clearInterval(interval);
     };
   }, []);
+
   return (
     <tr>
       <td>
