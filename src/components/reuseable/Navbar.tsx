@@ -101,23 +101,23 @@ export const Navbar = () => {
                 <List size={40} className=" mx-4" />
               </DrawerTrigger>
               <DrawerContent className="">
-                <div className="absolute inset-x-0 h-px w-3/4 mx-auto -top-px shadow-2xl  bg-gradient-to-r from-transparent via-blue-500 to-transparent" />
+                <div className="absolute inset-x-0 h-px w-3/4 mx-auto -top-px shadow-2xl  bg-gradient-to-r from-transparent via-[#4854ff] to-transparent" />
                 <div className="overflow-hidden relative">
                   <DrawerHeader>
-                    <DrawerTitle className="z-30 pt-2">Navigation</DrawerTitle>
+                    <DrawerTitle className=" pt-2 ">Navigation</DrawerTitle>
                   </DrawerHeader>
-                  <div className="flex  text-white  justify-evenly items-center flex-wrap  gap-4 z-30 pb-4">
-                    <Button variant="primary" size="sm" className="z-30">
-                      <Link href="/how" className="text-xl z-30">
+                  <div className="flex  text-white  justify-evenly items-center flex-wrap  gap-4  pb-4">
+                    <Button variant="primary" size="sm">
+                      <Link href="/how" className="text-xl ">
                         How it works
                       </Link>
                     </Button>
-                    <Button variant="primary" size="sm" className="z-30">
+                    <Button variant="primary" size="sm">
                       <Link href="/lending" className="text-xl">
                         Lending
                       </Link>
                     </Button>
-                    <Button variant="primary" size="sm" className="z-30">
+                    <Button variant="primary" size="sm">
                       <Link href="/borrowing" className="text-xl">
                         Borrowing
                       </Link>

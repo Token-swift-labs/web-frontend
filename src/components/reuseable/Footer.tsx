@@ -5,18 +5,18 @@ export const Footer = () => {
   return (
     <div className="w-full z-30 relative mt-[100px]">
       <div className="flex justify-between w-full bg-footer_blue p-4 flex-col sm:flex-row">
-        <div className="flex ">
+        <div className="flex justify-between sm:justify-normal">
           <div className="flex items-center justify-center ">
             <Image src={logo} alt="logo" width={170} />
           </div>
           <div className="flex flex-col justify-center  ml-8 gap-1">
-            <div className="text-text_dimmed text-xl font-semibold hover:text-white">
+            <div className="text-text_dimmed text-xl font-semibold hover:text-white text-end sm:text-start">
               How it works
             </div>
-            <div className="text-text_dimmed text-xl font-semibold hover:text-white">
+            <div className="text-text_dimmed text-xl font-semibold hover:text-white text-end sm:text-start">
               FAQ
             </div>
-            <div className="text-text_dimmed text-xl font-semibold hover:text-white">
+            <div className="text-text_dimmed text-xl font-semibold hover:text-white text-end sm:text-start">
               Feedback
             </div>
           </div>
@@ -26,10 +26,10 @@ export const Footer = () => {
             <Image src={discordIcon} alt="discord" />
           </button>
           <div className="flex sm:flex-col items-center sm:items-end sm:mt-4 gap-1">
-            <div className="text-text_dimmed text-md  hover:text-white text-center border border-text_dimmed p-1 rounded-md sm:border-none ">
+            <div className="text-text_dimmed text-md  hover:text-white text-center  p-1 ">
               Privacy policy
             </div>
-            <div className="text-text_dimmed text-md  hover:text-white border border-text_dimmed p-1 rounded-md sm:border-none">
+            <div className="text-text_dimmed text-md  hover:text-white  p-1">
               Terms
             </div>
             <div className="text-text_dimmed/50 text-md hover:text-white text-center">
