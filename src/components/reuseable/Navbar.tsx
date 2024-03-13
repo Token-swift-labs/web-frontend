@@ -66,7 +66,7 @@ export const Navbar = () => {
       <OverlayMeteors isOpen={isOpen} />
 
       <animated.header
-        className="w-full flex justify-between py-8 px-4 md:px-14 items-center z-30 fixed h-26 overflow-hidden"
+        className="w-full flex justify-between py-8 px-4 md:px-14 items-center z-40 fixed h-26 overflow-hidden"
         style={props}
       >
         <div className="absolute left-[0px] h-full w-full bg-gray-900 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10" />
