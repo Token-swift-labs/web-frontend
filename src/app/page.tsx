@@ -17,24 +17,24 @@ export default function LandingPage() {
           src={bgWaves1}
           alt="waves left"
           height={1300}
-          className=" absolute top-[-800px] left-[-250px] scale-y-[-1] rotate-[40deg] z-0"
+          className=" opacity-70 md:opacity-100 absolute top-[-400px] left-[-150px]  sm:left-[-200px] sm:top-[-800px] md:left-[-250px] scale-y-[-1] rotate-[40deg] z-0"
         />
         <Image
           src={bgWaves1}
           alt="waves left"
           height={1300}
-          className="  absolute top-[-300px] right-[-250px] scale-x-[-1] rotate-[-30deg] z-0"
+          className=" opacity-70 md:opacity-100 absolute top-[-300px] right-[-200px] md:right-[-250px] scale-x-[-1] rotate-[-30deg] z-0"
         />
         <Image
           src={bgWaves2}
           alt="waves mid"
           height={800}
-          className="  absolute top-[700px] left-[-320px] rotate-[10deg]  z-0"
+          className=" opacity-70 md:opacity-100 absolute top-[700px] left-[-230px] sm:left-[-320px] rotate-[10deg]  z-0"
         />
         <Image
           src={bgWaves3}
           alt="waves mid"
-          className="  absolute bottom-[-200px]  z-0 w-full"
+          className="  absolute bottom-[100px] sm:bottom-[-200px]  z-0 w-full"
         />
         <Benefits />
         <Feautres />

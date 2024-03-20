@@ -2,13 +2,15 @@ import type { Config } from "tailwindcss";
 const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
+const { join } = require("path");
+
 const config = {
   darkMode: ["class"],
   content: [
-    "./src/pages/**/*.{ts,tsx}",
-    "./src/components/**/*.{ts,tsx}",
-    "./src/app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
+    join(__dirname, "src/pages/**/*.{ts,tsx,js,jsx}"),
+    join(__dirname, "src/components/**/*.{ts,tsx,js,jsx}"),
+    join(__dirname, "src/**/*.{ts,tsx,js,jsx}"),
+    join(__dirname, "src/app/**/*.{ts,tsx,js,jsx}"),
   ],
   prefix: "",
   theme: {
@@ -40,10 +42,10 @@ const config = {
           to: { height: "0" },
         },
         meteor: {
-          "0%": { transform: "rotate(215deg) translateX(0)", opacity: "1" },
+          "0%": { transform: "rotate(220deg) translateX(0)", opacity: "1" },
           "70%": { opacity: "1" },
           "100%": {
-            transform: "rotate(215deg) translateX(-500px)",
+            transform: "rotate(230deg) translateX(-700px)",
             opacity: "0",
           },
         },
