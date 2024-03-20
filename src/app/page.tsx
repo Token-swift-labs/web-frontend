@@ -9,49 +9,10 @@ import bgWaves1 from "../../public/waves-top.png";
 import bgWaves2 from "../../public/waves-mid.png";
 import bgWaves3 from "../../public/waves-bottom.svg";
 
-import {
-  AnchorProvider,
-  BN,
-  Program,
-  utils,
-  web3,
-} from "@project-serum/anchor";
-import { Connection, PublicKey } from "@solana/web3.js";
-import { useAnchorWallet } from "@solana/wallet-adapter-react";
-
-const idl = require("../../server/target/idl/server.json");
-const utf8 = utils.bytes.utf8;
-
 export default function LandingPage() {
-  const anchorWallet = useAnchorWallet();
-
-  async function sendTransaction() {
-    if (!anchorWallet) {
-      return;
-    }
-    const network = "https://api.devnet.solana.com";
-    const connection = new Connection(network, "processed");
-    const provider = new AnchorProvider(connection, anchorWallet, {
-      preflightCommitment: "processed",
-    });
-    const program = new Program(idl, idl.metadata.address, provider);
-
-    try {
-      const toKey = new PublicKey(
-        "C8y9jqMCS81AR6r9Zq4FSCVAuERGNg4gaBgn3PaV2e8J"
-      );
-      const trans = await program.methods.initialize().rpc();
-
-      console.log("trans", trans);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
   return (
     <div className="font-kanit text-white flex flex-col ">
       <Hero />
-      <button onClick={sendTransaction}>SEND</button>
       <div className="overflow-hidden w-full h-full relative">
         <Image
           src={bgWaves1}
