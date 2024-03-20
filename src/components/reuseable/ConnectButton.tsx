@@ -24,19 +24,12 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { GridLoader } from "react-spinners";
-import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/components/ui/use-toast";
-import OverlayMeteors from "../ui/OverlayMeteors";
-import {
-  AnchorProvider,
-  BN,
-  Program,
-  utils,
-  web3,
-} from "@project-serum/anchor";
+import { AnchorProvider, Program } from "@project-serum/anchor";
 import { Connection, PublicKey } from "@solana/web3.js";
 import { useAnchorWallet } from "@solana/wallet-adapter-react";
-const idl = require("../../../server/target/idl/server.json");
+
+const idl = require("../../idl.json");
 
 const ConnectButton = () => {
   const anchorWallet = useAnchorWallet();

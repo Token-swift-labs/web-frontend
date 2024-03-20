@@ -1,0 +1,14 @@
+{
+  "version": "0.1.0",
+  "name": "server",
+  "instructions": [
+    {
+      "name": "initialize",
+      "accounts": [],
+      "args": []
+    }
+  ],
+  "metadata": {
+    "address": "C8y9jqMCS81AR6r9Zq4FSCVAuERGNg4gaBgn3PaV2e8J"
+  }
+}
