@@ -24,12 +24,15 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { GridLoader } from "react-spinners";
-import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/components/ui/use-toast";
-import OverlayMeteors from "../ui/OverlayMeteors";
+import { AnchorProvider, Program } from "@project-serum/anchor";
+import { Connection, PublicKey } from "@solana/web3.js";
+import { useAnchorWallet } from "@solana/wallet-adapter-react";
+
+const idl = require("../../idl.json");
 
 const ConnectButton = () => {
-  // const anchorWallet = useAnchorWallet();
+  const anchorWallet = useAnchorWallet();
   const { select, wallets, publicKey, disconnect, connecting, connected } =
     useWallet();
   const { toast, dismiss } = useToast();
@@ -69,6 +72,29 @@ const ConnectButton = () => {
     setSelectedWallet(wallet);
   };
 
+  // TEST TRANSACTION
+  async function sendTransaction() {
+    if (!anchorWallet) {
+      return;
+    }
+    const network = "https://api.devnet.solana.com";
+    const connection = new Connection(network, "processed");
+    const provider = new AnchorProvider(connection, anchorWallet, {
+      preflightCommitment: "processed",
+    });
+    const program = new Program(idl, idl.metadata.address, provider);
+
+    try {
+      const toKey = new PublicKey(
+        "C8y9jqMCS81AR6r9Zq4FSCVAuERGNg4gaBgn3PaV2e8J"
+      );
+      const trans = await program.methods.initialize().rpc();
+
+      console.log("trans", trans);
+    } catch (err) {
+      console.log(err);
+    }
+  }
   if (publicKey)
     return (
       <DropdownMenu>
@@ -102,6 +128,9 @@ const ConnectButton = () => {
               }}
             />
           </DropdownMenuItem>
+          <DropdownMenuItem>
+            <button onClick={sendTransaction}> send test init</button>
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     );
@@ -110,12 +139,6 @@ const ConnectButton = () => {
     <>
       <Dialog>
         <DialogTrigger>
-          {/* <Button
-            borderRadius="1.1rem"
-            className="bg-footer_blue/80 text-white  text-[16px] cursor-pointer font-semibold hover:bg-footer_blue_lighter/70"
-          >
-            Connect wallet
-          </Button> */}
           <div className="relative inline-flex h-10 md:h-12 overflow-hidden rounded-full p-[2px] focus:outline-none ">
             <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#393BB2_0%,#ad70fa_50%,#393BB2_100%)]" />
             <span className=" whitespace-nowrap inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-footer_blue_lighter hover:bg-footer_blue_lighter/50 px-3 md:px-6 md:py-1 text-md font-medium text-white backdrop-blur-3xl">
