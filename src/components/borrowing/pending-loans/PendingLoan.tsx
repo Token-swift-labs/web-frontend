@@ -50,15 +50,15 @@ const PendingLoan = ({ nft }: Props) => {
         )}
       </td>
       <td>
-        <RoundedButton
-          borderColor="rgb(34, 197, 94)"
-          notifications={nft.notifications}
-        >
-          Lending offers
-        </RoundedButton>
-      </td>
-      <td>
-        <RoundedButton>Edit terms</RoundedButton>
+        <div className="flex justify-around">
+          <RoundedButton
+            borderColor="rgb(34, 197, 94)"
+            notifications={nft.notifications}
+          >
+            Lending offers
+          </RoundedButton>
+          <RoundedButton>Edit terms</RoundedButton>
+        </div>
       </td>
     </tr>
   );
