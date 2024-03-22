@@ -6,6 +6,7 @@ import bgWaves1 from "../../../public/waves-bottom.svg";
 import { Button } from "@/components/ui/button";
 import "./style.css";
 import ActiveLoans from "@/components/borrowing/active-loans/ActiveLoans";
+import HistoryLoans from "@/components/borrowing/history-loans/HistoryLoans";
 
 const Borrowing = () => {
   const [activePage, setActivePage] = useState<
@@ -66,7 +67,7 @@ const Borrowing = () => {
           <div className="flex flex-row items-center justify-between bg-[#151527] opacity-80 p-4 rounded-xl w-[100%]">
             {activePage === "active" && <ActiveLoans />}
             {activePage === "pending" && <></>}
-            {activePage === "history" && <></>}
+            {activePage === "history" && <HistoryLoans />}
           </div>
         </div>
       </div>
