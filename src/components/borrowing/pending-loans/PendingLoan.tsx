@@ -17,9 +17,12 @@ type Props = {
     };
     startAt: Date;
     endAt: Date;
+    buyLoan: boolean;
+    notifications?: number;
   };
 };
-const HistoryLoan = ({ nft }: Props) => {
+const PendingLoan = ({ nft }: Props) => {
+  console.log(nft);
   return (
     <tr>
       <td>
@@ -35,20 +38,29 @@ const HistoryLoan = ({ nft }: Props) => {
         </div>
       </td>
       <td>{nft.duration}</td>
-      <td>{getTimeDiff(nft.endAt, nft.startAt)[0]}</td>
-      <td>{nft.startAt.toLocaleDateString()}</td>
       <td>
         {nft.total.toFixed(2)} {nft.currency}
       </td>
       <td>{(nft.interestRate * 100).toFixed(2)}%</td>
       <td>
-        {nft.total - nft.ballance.payedOff <= 0 ? (
-          <span className="text-green-500">Paid off</span>
+        {nft.buyLoan ? (
+          <span className="text-green-500">yes</span>
         ) : (
-          <span className="text-red-500">Not paid off</span>
+          <span className="text-red-500">no</span>
         )}
+      </td>
+      <td>
+        <RoundedButton
+          borderColor="rgb(34, 197, 94)"
+          notifications={nft.notifications}
+        >
+          Lending offers
+        </RoundedButton>
+      </td>
+      <td>
+        <RoundedButton>Edit terms</RoundedButton>
       </td>
     </tr>
   );
 };
-export default HistoryLoan;
+export default PendingLoan;
