@@ -21,6 +21,9 @@
 .gray-text {
   color: #626262;
 }
+.gray-text-light {
+  color: #6b6fc4;
+}
 
 /* .wallet-adapter-button {
   background-color: white;

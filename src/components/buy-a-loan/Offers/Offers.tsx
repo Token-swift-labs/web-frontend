@@ -10,11 +10,11 @@ export const Offers = () => {
         <input
           type="text"
           placeholder="Collection name..."
-          className="bg-transparent w-[150px] text-white placeholder-[#484872] focus:border-none"
+          className="bg-transparent w-[150px] text-white placeholder-[#484872] focus:outline-none"
         />
       </div>
       <div
-        className="w-[100%] flex flex-wrap flex-row justify-start md:justify-start"
+        className="w-[100%] flex flex-wrap flex-row justify-center"
         style={{ gap: 24 }}
       >
         {nfts.map((nft, index) => (
@@ -37,10 +37,16 @@ const nfts = [
     total: 2.01,
     currency: "SOL",
     interestRate: 0.13,
-    ballance: {
+    balance: {
       payedOff: 0.98,
       insurance: false,
     },
+    changeValue: "11%",
+    pricing: {
+      floor: "0.5",
+      value: "1.5",
+    },
+    trustScore: "244R",
   },
   {
     nft: {
@@ -53,10 +59,16 @@ const nfts = [
     total: 2.01,
     currency: "SOL",
     interestRate: 0.13,
-    ballance: {
+    balance: {
       payedOff: 0.2,
       insurance: true,
     },
+    changeValue: "0%",
+    pricing: {
+      floor: "0.5",
+      value: "1.1",
+    },
+    trustScore: "244R",
   },
   {
     nft: {
@@ -69,9 +81,15 @@ const nfts = [
     total: 2.01,
     currency: "SOL",
     interestRate: 0.13,
-    ballance: {
+    balance: {
       payedOff: 1.6,
       insurance: true,
     },
+    changeValue: "-23%",
+    pricing: {
+      floor: "0.5",
+      value: "0.7",
+    },
+    trustScore: "244R",
   },
 ];
