@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/drawer";
 
 import ConnectButton from "./ConnectButton";
-import { Browsers, List } from "@phosphor-icons/react";
+import { List } from "@phosphor-icons/react";
 import { Button } from "../ui/button";
 import OverlayMeteors from "../ui/OverlayMeteors";
 export const Navbar = () => {
@@ -53,9 +53,8 @@ export const Navbar = () => {
             <Link href="/borrowing" className="text-xl">
               Borrowing
             </Link>
-            <Link href="/buyaloan" className="text-xl text-center">
+            <Link href="/buy-a-loan" className="text-xl text-center">
               Buy a loan <br />
-              <span className="text-text_dimmed">(soon)</span>
             </Link>
           </div>
           {/* Small devices navbar */}
