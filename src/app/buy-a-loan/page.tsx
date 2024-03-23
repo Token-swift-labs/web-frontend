@@ -50,7 +50,10 @@ const page = () => {
               Bought
             </button>
           </h3>
-          <div className="flex flex-col items-start justify-start bg-[#151527c5] p-4 rounded-xl w-[100%] min-h-[300px]">
+          <div
+            className="flex flex-col items-start justify-start bg-[#151527c5] p-4 rounded-xl w-[100%] min-h-[300px]"
+            style={{ gap: 16 }}
+          >
             {activePage === "offers" && <Offers />}
             {activePage === "bought" && <></>}
           </div>
