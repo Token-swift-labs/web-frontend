@@ -3,16 +3,22 @@ import { Navbar, Footer } from "@/components";
 import React, { useState } from "react";
 import Image from "next/image";
 import bgWaves1 from "../../../public/waves-bottom.svg";
-import { Button } from "@/components/ui/button";
 import "./style.css";
 import ActiveLoans from "@/components/borrowing/active-loans/ActiveLoans";
 import HistoryLoans from "@/components/borrowing/history-loans/HistoryLoans";
 import PendingLoans from "@/components/borrowing/pending-loans/PendingLoans";
+import { Button } from "@/components/ui/button";
 
 const Borrowing = () => {
   const [activePage, setActivePage] = useState<
     "active" | "pending" | "history"
   >("active");
+  const [showRequestLoanModal, setShowRequestLoanModal] = useState(false);
+
+  const handleRequestLoan = () => {
+    setShowRequestLoanModal(true);
+  };
+
   return (
     <div className="font-kanit text-white flex flex-col ">
       <Navbar />
@@ -32,8 +38,16 @@ const Borrowing = () => {
               How it works?
             </a>
           </div>
-          <Button className="rounded-xl">Request a loan</Button>
-          <Button className="rounded-xl">Insurance</Button>
+          <Button
+            className="rounded-xl transition-all"
+            onClick={handleRequestLoan}
+            variant="primary"
+          >
+            Request a loan
+          </Button>
+          <Button variant="primary" className="rounded-xl transition-all">
+            Insurance
+          </Button>
         </div>
         <div
           className="flex flex-col justify-start"

@@ -40,7 +40,7 @@ export const Navbar = () => {
 
         <div className="relative w-full flex justify-between  overflow-hidden ">
           {/* Big devices navbar */}
-          <div className="hidden md:flex items-center gap-4 justify-around xl:justify-normal  xl:gap-20 w-full">
+          <div className="hidden md:flex items-center gap-4 justify-around xl:justify-normal xl:gap-20 w-full">
             <Link href="/">
               <Image src={logo} alt="logo" width={170} />
             </Link>
@@ -67,7 +67,7 @@ export const Navbar = () => {
               <DrawerTrigger>
                 <List size={40} className=" mx-4" />
               </DrawerTrigger>
-              <DrawerContent className="">
+              <DrawerContent>
                 <div className="absolute inset-x-0 h-px w-3/4 mx-auto -top-px shadow-2xl  bg-gradient-to-r from-transparent via-[#4854ff] to-transparent" />
                 <div className="overflow-hidden relative">
                   <DrawerHeader>
