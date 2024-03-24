@@ -1,5 +1,5 @@
 "use client";
-import { Navbar, Footer } from "@/components";
+import { Navbar, Footer, RequestLoanModal } from "@/components";
 import React, { useState } from "react";
 import Image from "next/image";
 import bgWaves1 from "../../../public/waves-bottom.svg";
@@ -99,6 +99,10 @@ const Borrowing = () => {
           position: "fixed",
           zIndex: -1,
         }}
+      />
+      <RequestLoanModal
+        open={showRequestLoanModal}
+        changeVisibility={setShowRequestLoanModal}
       />
     </div>
   );
