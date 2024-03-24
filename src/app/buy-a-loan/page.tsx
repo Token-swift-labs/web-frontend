@@ -1,18 +1,12 @@
 "use client";
-import { Navbar, Footer } from "@/components";
+import { Binoculars, Footer, Navbar, Offers } from "@/components";
 import React, { useState } from "react";
 import Image from "next/image";
 import bgWaves1 from "../../../public/waves-bottom.svg";
-import { Button } from "@/components/ui/button";
-import "./style.css";
-import ActiveLoans from "@/components/borrowing/active-loans/ActiveLoans";
-import HistoryLoans from "@/components/borrowing/history-loans/HistoryLoans";
-import PendingLoans from "@/components/borrowing/pending-loans/PendingLoans";
 
-const Borrowing = () => {
-  const [activePage, setActivePage] = useState<
-    "active" | "pending" | "history"
-  >("active");
+const page = () => {
+  const [activePage, setActivePage] = useState<"offers" | "bought">("offers");
+
   return (
     <div className="font-kanit text-white flex flex-col ">
       <Navbar />
@@ -26,14 +20,12 @@ const Borrowing = () => {
               className="text-6xl font-bold text-center"
               style={{ fontWeight: 400 }}
             >
-              Borrow
+              Buy a loan
             </h2>
             <a href="/how-it-works" className="gray-blue-text">
               How it works?
             </a>
           </div>
-          <Button className="rounded-xl">Request a loan</Button>
-          <Button className="rounded-xl">Insurance</Button>
         </div>
         <div
           className="flex flex-col justify-start"
@@ -45,30 +37,25 @@ const Borrowing = () => {
         >
           <h3 className="text-4xl">
             <button
-              className={activePage !== "active" ? "gray-blue-text" : ""}
-              onClick={() => setActivePage("active")}
+              className={activePage !== "offers" ? "gray-blue-text" : ""}
+              onClick={() => setActivePage("offers")}
             >
-              Active loans
+              Offers
             </button>
             /
             <button
-              className={activePage !== "pending" ? "gray-blue-text" : ""}
-              onClick={() => setActivePage("pending")}
+              className={activePage !== "bought" ? "gray-blue-text" : ""}
+              onClick={() => setActivePage("bought")}
             >
-              Pending
-            </button>
-            /
-            <button
-              className={activePage !== "history" ? "gray-blue-text" : ""}
-              onClick={() => setActivePage("history")}
-            >
-              History
+              Bought
             </button>
           </h3>
-          <div className="flex flex-row items-center justify-between bg-[#151527c5] p-4 rounded-xl w-[100%]">
-            {activePage === "active" && <ActiveLoans />}
-            {activePage === "pending" && <PendingLoans />}
-            {activePage === "history" && <HistoryLoans />}
+          <div
+            className="flex flex-col items-start justify-start bg-[#151527c5] p-4 rounded-xl w-[100%] min-h-[300px]"
+            style={{ gap: 16 }}
+          >
+            {activePage === "offers" && <Offers />}
+            {activePage === "bought" && <></>}
           </div>
         </div>
       </div>
@@ -90,4 +77,4 @@ const Borrowing = () => {
   );
 };
 
-export default Borrowing;
+export default page;

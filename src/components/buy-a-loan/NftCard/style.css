@@ -1,0 +1,18 @@
+.card-main {
+  height: 280px;
+}
+
+.card-main-content {
+  height: 180px;
+  overflow: hidden;
+  transition: ease all 0.4s;
+  transition-timing-function: ease;
+}
+
+.card-main:hover {
+  height: auto;
+}
+
+.card-main:hover > .card-main-content {
+  height: auto;
+}
