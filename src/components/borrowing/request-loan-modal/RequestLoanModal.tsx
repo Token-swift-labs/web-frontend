@@ -20,10 +20,12 @@ export const RequestLoanModal = (props: RequestLoanModalProps) => {
 
         <div className="overflow-hidden relative flex justify-center">
           <div className="flex flex-col items-start mb-5">
-            <DrawerHeader>
-              <DrawerTitle className=" pt-2 ">Request loan</DrawerTitle>
+            <DrawerHeader className="p-0">
+              <DrawerTitle style={{ padding: "20px 0" }}>
+                Request loan
+              </DrawerTitle>
             </DrawerHeader>
-
+            {/** Form content in the modal in other component */}
             <RequestLoanForm />
           </div>
         </div>

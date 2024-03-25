@@ -21,8 +21,10 @@ import {
 import { Calendar } from "@/components/ui/calendar";
 import { useForm } from "react-hook-form";
 import { RequestLoanFormI } from "./RequestLoanModal.types";
+import { Input } from "@/components/ui/input";
 
 const defaultValues: RequestLoanFormI = {
+  amount: 0,
   endDate: null,
 };
 
@@ -31,6 +33,11 @@ export const RequestLoanForm = () => {
     defaultValues,
     resolver: zodResolver(requestLoanSchema),
   });
+  const currentDate = new Date();
+  const futureDate = new Date();
+  futureDate.setDate(currentDate.getDate() + 7); // 7 days in the future
+  const maxDate = new Date();
+  maxDate.setDate(currentDate.getDate() + 60); // 60 days in the future
 
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
@@ -46,6 +53,18 @@ export const RequestLoanForm = () => {
         className="space-y-8 text-white"
       >
         <FormItem className="flex flex-col">
+          <FormLabel>Amount</FormLabel>
+          <Input
+            type="number"
+            className="bg-transparent appearance-none"
+            {...form.register("amount")}
+            min={0}
+          />
+          <FormDescription className="text-[#949494]">
+            Enter the amount you want to borrow
+          </FormDescription>
+        </FormItem>
+        <FormItem className="flex flex-col">
           <FormLabel>End of a loan</FormLabel>
           <Popover open={isCalendarOpen} onOpenChange={setIsCalendarOpen}>
             <PopoverTrigger asChild>
@@ -53,16 +72,16 @@ export const RequestLoanForm = () => {
                 <Button
                   variant={"outline"}
                   className={cn(
-                    "w-[240px] pl-3 text-left font-normal bg-transparent",
+                    "w-full p-3 font-normal bg-transparent gap-2 flex flex-row justify-start",
                     !endDateWatchedValue && "text-muted-foreground"
                   )}
                 >
+                  <CalendarIcon className="h-4 w-4" />
                   {endDateWatchedValue ? (
-                    format(endDateWatchedValue, "PPP")
+                    format(endDateWatchedValue, "dd MMM yyyy")
                   ) : (
                     <span>Pick a date</span>
                   )}
-                  <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                 </Button>
               </FormControl>
             </PopoverTrigger>
@@ -74,13 +93,17 @@ export const RequestLoanForm = () => {
                   form.setValue("endDate", date || null);
                   setIsCalendarOpen(false);
                 }}
-                disabled={(date) => date < new Date()}
+                disabled={(date) => {
+                  return date < futureDate || date > maxDate;
+                }}
+                fromDate={futureDate}
                 initialFocus
               />
             </PopoverContent>
           </Popover>
           <FormDescription className="text-[#949494]">
-            Select time when you want to return the loan
+            Select time when you want to return the loan <br />
+            (between 7 to 60 days)
           </FormDescription>
         </FormItem>
         <Button type="submit" variant="primary">

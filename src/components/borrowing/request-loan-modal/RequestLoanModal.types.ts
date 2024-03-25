@@ -4,5 +4,6 @@ export type RequestLoanModalProps = {
 };
 
 export interface RequestLoanFormI {
+  amount: number;
   endDate: Date | null;
 }
