@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import bgWaves1 from "../../../public/waves-bottom.svg";
 
-const page = () => {
+const BuyALoan = () => {
   const [activePage, setActivePage] = useState<"offers" | "bought">("offers");
 
   return (
@@ -77,4 +77,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default BuyALoan;
