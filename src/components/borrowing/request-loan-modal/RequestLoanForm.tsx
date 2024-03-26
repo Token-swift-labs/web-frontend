@@ -10,6 +10,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -20,18 +21,23 @@ import {
 } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
 import { useForm } from "react-hook-form";
-import { RequestLoanFormI } from "./RequestLoanModal.types";
+import {
+  RequestLoanFormI,
+  RequestLoanFormProps,
+} from "./RequestLoanModal.types";
 import { Input } from "@/components/ui/input";
 import { DrawerHeader, DrawerTitle } from "@/components/ui/drawer";
 import { maxDate, minDate } from "@/constants";
 import { AdditionalInfo } from "./AdditionalInfo";
+import { useToast } from "@/components/ui/use-toast";
 
 const defaultValues: RequestLoanFormI = {
   amount: 0,
   endDate: minDate,
 };
 
-export const RequestLoanForm = () => {
+export const RequestLoanForm = (props: RequestLoanFormProps) => {
+  const { toast, dismiss } = useToast();
   const form = useForm({
     defaultValues,
     resolver: zodResolver(requestLoanSchema),
@@ -44,10 +50,22 @@ export const RequestLoanForm = () => {
 
   const onSubmit = (data: RequestLoanFormI) => {
     console.log(data);
+    const { id } = toast({
+      title: "Loan request submitted",
+      description: `Your loan has appeared in pending requests`,
+    });
+    props.closeDrawer();
+    form.reset();
+    setTimeout(() => {
+      dismiss(id);
+    }, 5000);
   };
 
   return (
-    <div className="flex flex-row items-center gap-10">
+    <div
+      className="flex flex-row items-center justify-center mt-5 md:gap-10 flex-wrap-reverse md:flex-nowrap"
+      style={{ padding: "0 20px" }}
+    >
       <div className="flex flex-col items-start mb-5 min-w-[300px]">
         <DrawerHeader className="p-0">
           <DrawerTitle style={{ padding: "20px 0" }}>Request loan</DrawerTitle>
@@ -62,11 +80,18 @@ export const RequestLoanForm = () => {
               <Input
                 type="number"
                 className="bg-transparent remove-arrow"
-                {...form.register("amount")}
                 min={0}
-                required
                 autoComplete="off"
+                {...form.register("amount", { valueAsNumber: true })}
+                onInput={(e) =>
+                  form.setValue("amount", Number(e.currentTarget.value))
+                }
               />
+              {form.formState.errors.amount && (
+                <FormMessage>
+                  {form.formState.errors.amount?.message}
+                </FormMessage>
+              )}
               <FormDescription className="text-[#949494]">
                 Enter the amount you want to borrow
               </FormDescription>
@@ -116,7 +141,7 @@ export const RequestLoanForm = () => {
             </FormItem>
 
             <Button type="submit" variant="primary">
-              Submit
+              Request loan
             </Button>
           </form>
         </Form>

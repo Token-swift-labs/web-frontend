@@ -5,7 +5,7 @@ import { calculateInterest } from "@/utils";
 
 export const AdditionalInfo = (props: AdditionalInfoProps) => {
   return (
-    <div className="h-36 w-full rounded-2xl bg-gradient-to-tr from-transparent via-[#4854ff] to-transparent p-[1px]">
+    <div className="h-36 w-full rounded-2xl bg-gradient-to-tr from-transparent via-[#4854ff] to-transparent p-[1px] max-w-[302px]">
       <section className="flex flex-col items-start justify-center bg-footer_blue back rounded-2xl p-5 w-[300px] h-full text-white">
         <h2 className="text-2xl font-semibold">Additional info</h2>
         <div className="flex felx-row flex-wrap items-center gap-2">

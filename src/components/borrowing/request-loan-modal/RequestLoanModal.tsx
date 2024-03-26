@@ -19,7 +19,7 @@ export const RequestLoanModal = (props: RequestLoanModalProps) => {
         <div className="absolute inset-x-0 h-px w-3/4 mx-auto -top-px shadow-2xl bg-gradient-to-r from-transparent via-[#4854ff] to-transparent" />
 
         <div className="overflow-hidden relative flex justify-center">
-          <RequestLoanForm />
+          <RequestLoanForm closeDrawer={() => props.changeVisibility(false)} />
         </div>
       </DrawerContent>
     </Drawer>
