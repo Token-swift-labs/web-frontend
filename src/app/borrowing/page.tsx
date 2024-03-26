@@ -45,9 +45,9 @@ const Borrowing = () => {
           >
             Request a loan
           </Button>
-          <Button variant="primary" className="rounded-xl transition-all">
+          {/* <Button variant="primary" className="rounded-xl transition-all">
             Insurance
-          </Button>
+          </Button> */}
         </div>
         <div
           className="flex flex-col justify-start"

@@ -7,3 +7,8 @@ export interface RequestLoanFormI {
   amount: number;
   endDate: Date | null;
 }
+
+export type AdditionalInfoProps = {
+  amount: number;
+  endDate: Date | null;
+};

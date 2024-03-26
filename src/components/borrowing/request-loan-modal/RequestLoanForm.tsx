@@ -22,10 +22,13 @@ import { Calendar } from "@/components/ui/calendar";
 import { useForm } from "react-hook-form";
 import { RequestLoanFormI } from "./RequestLoanModal.types";
 import { Input } from "@/components/ui/input";
+import { DrawerHeader, DrawerTitle } from "@/components/ui/drawer";
+import { maxDate, minDate } from "@/constants";
+import { AdditionalInfo } from "./AdditionalInfo";
 
 const defaultValues: RequestLoanFormI = {
   amount: 0,
-  endDate: null,
+  endDate: minDate,
 };
 
 export const RequestLoanForm = () => {
@@ -33,83 +36,95 @@ export const RequestLoanForm = () => {
     defaultValues,
     resolver: zodResolver(requestLoanSchema),
   });
-  const currentDate = new Date();
-  const futureDate = new Date();
-  futureDate.setDate(currentDate.getDate() + 7); // 7 days in the future
-  const maxDate = new Date();
-  maxDate.setDate(currentDate.getDate() + 60); // 60 days in the future
 
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
   const endDateWatchedValue = form.watch("endDate");
+  const amountWatchedValue = form.watch("amount");
 
   const onSubmit = (data: RequestLoanFormI) => {
     console.log(data);
   };
+
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-8 text-white"
-      >
-        <FormItem className="flex flex-col">
-          <FormLabel>Amount</FormLabel>
-          <Input
-            type="number"
-            className="bg-transparent appearance-none"
-            {...form.register("amount")}
-            min={0}
-          />
-          <FormDescription className="text-[#949494]">
-            Enter the amount you want to borrow
-          </FormDescription>
-        </FormItem>
-        <FormItem className="flex flex-col">
-          <FormLabel>End of a loan</FormLabel>
-          <Popover open={isCalendarOpen} onOpenChange={setIsCalendarOpen}>
-            <PopoverTrigger asChild>
-              <FormControl>
-                <Button
-                  variant={"outline"}
-                  className={cn(
-                    "w-full p-3 font-normal bg-transparent gap-2 flex flex-row justify-start",
-                    !endDateWatchedValue && "text-muted-foreground"
-                  )}
-                >
-                  <CalendarIcon className="h-4 w-4" />
-                  {endDateWatchedValue ? (
-                    format(endDateWatchedValue, "dd MMM yyyy")
-                  ) : (
-                    <span>Pick a date</span>
-                  )}
-                </Button>
-              </FormControl>
-            </PopoverTrigger>
-            <PopoverContent className="w-auto p-0" align="start">
-              <Calendar
-                mode="single"
-                selected={endDateWatchedValue || undefined}
-                onSelect={(date) => {
-                  form.setValue("endDate", date || null);
-                  setIsCalendarOpen(false);
-                }}
-                disabled={(date) => {
-                  return date < futureDate || date > maxDate;
-                }}
-                fromDate={futureDate}
-                initialFocus
+    <div className="flex flex-row items-center gap-10">
+      <div className="flex flex-col items-start mb-5 min-w-[300px]">
+        <DrawerHeader className="p-0">
+          <DrawerTitle style={{ padding: "20px 0" }}>Request loan</DrawerTitle>
+        </DrawerHeader>
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-8 text-white"
+          >
+            <FormItem className="flex flex-col">
+              <FormLabel>Amount</FormLabel>
+              <Input
+                type="number"
+                className="bg-transparent remove-arrow"
+                {...form.register("amount")}
+                min={0}
+                required
+                autoComplete="off"
               />
-            </PopoverContent>
-          </Popover>
-          <FormDescription className="text-[#949494]">
-            Select time when you want to return the loan <br />
-            (between 7 to 60 days)
-          </FormDescription>
-        </FormItem>
-        <Button type="submit" variant="primary">
-          Submit
-        </Button>
-      </form>
-    </Form>
+              <FormDescription className="text-[#949494]">
+                Enter the amount you want to borrow
+              </FormDescription>
+            </FormItem>
+            <FormItem className="flex flex-col">
+              <FormLabel>End of a loan</FormLabel>
+              <Popover open={isCalendarOpen} onOpenChange={setIsCalendarOpen}>
+                <PopoverTrigger asChild>
+                  <FormControl>
+                    <Button
+                      variant={"outline"}
+                      className={cn(
+                        "w-full p-3 font-normal bg-transparent gap-2 flex flex-row justify-start",
+                        !endDateWatchedValue && "text-muted-foreground"
+                      )}
+                    >
+                      <CalendarIcon className="h-4 w-4" />
+                      {endDateWatchedValue ? (
+                        format(endDateWatchedValue, "dd MMM yyyy")
+                      ) : (
+                        <span>Pick a date</span>
+                      )}
+                    </Button>
+                  </FormControl>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <Calendar
+                    required
+                    mode="single"
+                    selected={endDateWatchedValue || undefined}
+                    onSelect={(date) => {
+                      form.setValue("endDate", date || null);
+                      setIsCalendarOpen(false);
+                    }}
+                    disabled={(date) => {
+                      return date < minDate || date > maxDate;
+                    }}
+                    fromDate={minDate}
+                    initialFocus
+                  />
+                </PopoverContent>
+              </Popover>
+              <FormDescription className="text-[#949494]">
+                Select time when you want to return the loan <br />
+                (between 7 to 60 days)
+              </FormDescription>
+            </FormItem>
+
+            <Button type="submit" variant="primary">
+              Submit
+            </Button>
+          </form>
+        </Form>
+      </div>
+      <AdditionalInfo
+        amount={amountWatchedValue}
+        endDate={endDateWatchedValue}
+      />
+    </div>
   );
 };
