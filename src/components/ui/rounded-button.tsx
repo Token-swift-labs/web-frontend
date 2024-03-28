@@ -7,15 +7,6 @@ export const RoundedButton = (props: {
 }) => {
   const ref = useRef<HTMLButtonElement>(null);
 
-  useEffect(() => {
-    const button = ref.current;
-
-    if (button) {
-      const width = button.offsetWidth;
-      console.log(width);
-    }
-  }, [ref]);
-
   return (
     <button
       ref={ref}

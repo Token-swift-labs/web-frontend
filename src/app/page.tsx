@@ -7,7 +7,6 @@ import Image from "next/image";
 import bgWaves1 from "../../public/waves-top.png";
 import bgWaves2 from "../../public/waves-mid.png";
 import bgWaves3 from "../../public/waves-bottom.svg";
-import { promises as fs } from "fs";
 export default async function LandingPage() {
   // const file = await fs.readFile("../../server/target/idl/server.json", "utf8");
   // const data = JSON.parse(file);

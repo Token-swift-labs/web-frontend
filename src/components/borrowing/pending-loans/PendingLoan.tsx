@@ -22,7 +22,6 @@ type Props = {
   };
 };
 const PendingLoan = ({ nft }: Props) => {
-  console.log(nft);
   return (
     <tr>
       <td>
